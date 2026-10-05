@@ -1,0 +1,41 @@
+name: Test Action
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Validate JavaScript
+        run: npm run validate
+
+      - name: Smoke-test safe fixtures with the Action
+        uses: ./
+        with:
+          path: fixtures/safe
+          fail-on: warning
+          report: /tmp/automation-workflow-guard-safe.json
+          exclude: ''
+
+      - name: Confirm vulnerable fixtures fail in CLI mode
+        run: |
+          if node bin/guard.js fixtures/vulnerable --fail-on error --report /tmp/vulnerable.json; then
+            echo "Expected vulnerable fixtures to fail"
+            exit 1
+          fi
+          test -s /tmp/vulnerable.json

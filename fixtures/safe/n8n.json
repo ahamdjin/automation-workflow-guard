@@ -1,0 +1,10 @@
+{
+  "name": "Safe Intake",
+  "active": false,
+  "settings": {"executionOrder": "v1"},
+  "nodes": [
+    {"id": "1", "name": "Webhook", "type": "n8n-nodes-base.webhook", "parameters": {"path": "safe-intake", "responseMode": "responseNode"}},
+    {"id": "2", "name": "Respond", "type": "n8n-nodes-base.respondToWebhook", "parameters": {"options": {"responseCode": 200}}}
+  ],
+  "connections": {"Webhook": {"main": [[{"node": "Respond", "type": "main", "index": 0}]]}}
+}

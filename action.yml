@@ -1,0 +1,49 @@
+name: Automation Workflow Guard by Ahmad Yar
+description: Guard n8n workflows, OpenAPI action schemas, tracked env files, and common automation secrets before they ship.
+author: Ahmad Yar
+branding:
+  icon: shield
+  color: blue
+inputs:
+  path:
+    description: Repository-relative path to scan.
+    required: false
+    default: .
+  fail-on:
+    description: Minimum severity that fails the Action. One of error, warning, or none.
+    required: false
+    default: error
+  report:
+    description: Repository-relative JSON report path. Set empty to disable the report file.
+    required: false
+    default: automation-workflow-guard-report.json
+  exclude:
+    description: Comma or newline separated glob-like paths to exclude.
+    required: false
+    default: node_modules/**,dist/**,coverage/**,.git/**
+  scan-secrets:
+    description: Scan text files for common high-confidence secret formats and tracked env files.
+    required: false
+    default: 'true'
+  scan-n8n:
+    description: Inspect JSON files that look like n8n workflow exports.
+    required: false
+    default: 'true'
+  scan-openapi:
+    description: Inspect JSON OpenAPI 3.x documents used by GPT Actions or tool APIs.
+    required: false
+    default: 'true'
+outputs:
+  findings:
+    description: Total number of findings.
+  errors:
+    description: Number of error findings.
+  warnings:
+    description: Number of warning findings.
+  scanned-files:
+    description: Number of tracked files inspected.
+  report-path:
+    description: JSON report path when report output is enabled.
+runs:
+  using: node24
+  main: src/index.js

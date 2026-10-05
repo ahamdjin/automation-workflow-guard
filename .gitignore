@@ -1,0 +1,5 @@
+node_modules/
+coverage/
+*.log
+automation-workflow-guard-report.json
+.DS_Store

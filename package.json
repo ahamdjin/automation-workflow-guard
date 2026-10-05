@@ -1,0 +1,16 @@
+{
+  "name": "automation-workflow-guard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static CI checks for n8n workflows, OpenAPI action schemas, tracked env files, and exposed automation secrets.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/guard.js && node --check src/index.js && node --check bin/guard.js",
+    "validate": "npm run check && npm test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "Apache-2.0"
+}

@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "node --test",
-    "check": "node --check src/guard.js && node --check src/index.js && node --check bin/guard.js",
-    "validate": "npm run check && npm test"
+    "check": "node --check src/guard.js && node --check src/index.js && node --check bin/guard.js && node --check vscode/extension.cjs && node --check vscode/scan-document.mjs && node --check scripts/prepare-vscode.mjs",
+    "validate": "npm run check && npm test && npm run prepare:vscode",
+    "prepare:vscode": "node scripts/prepare-vscode.mjs"
   },
   "engines": {
     "node": ">=22"

@@ -1,5 +1,7 @@
 # Automation Workflow Guard for VS Code
 
+**[Install from VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=AhmadYar.automation-workflow-guard)** · Publisher: `AhmadYar` · Version: `0.1.0`
+
 **Catch n8n workflow and OpenAPI mistakes while you edit.** A free, local-only extension by [Ahmad Yar](https://www.ahmadyar.co/), built on the same open-source rule engine as the [Automation Workflow Guard GitHub Action](https://github.com/ahamdjin/automation-workflow-guard).
 
 The extension checks the current file and optionally scans a workspace. Findings show up as rule-coded VS Code diagnostics in the **Problems** panel. No account, API key, LLM, or hosted service is required.
@@ -39,7 +41,7 @@ The extension only reads local editor/workspace files; it performs **no HTTP cal
 - `Scan Workspace` uses the VS Code file enumerator and may not reach every file in a very large workspace. See the notification for skipped and bounded scans.
 - It does not connect to n8n, Dify, automation accounts, or any user's private APIs.
 
-## Install a test build (.vsix)
+## Alternative: install a local test build (.vsix)
 
 Use **Extensions → ⋯ → Install from VSIX…** and select the `.vsix` file from the [CI workflow artifacts](https://github.com/ahamdjin/automation-workflow-guard/actions/workflows/test.yml), or create it locally using the instructions below.
 

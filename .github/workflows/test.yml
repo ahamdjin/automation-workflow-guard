@@ -39,3 +39,37 @@ jobs:
             exit 1
           fi
           test -s /tmp/vulnerable.json
+
+      - name: Package the VS Code extension
+        run: |
+          cd vscode
+          npx --yes @vscode/vsce@4.0.0 package --no-dependencies -o ../automation-workflow-guard-0.1.0.vsix
+          test -s ../automation-workflow-guard-0.1.0.vsix
+
+      - name: Verify VSIX includes both the extension host and shared scanner
+        run: |
+          python - <<'PY'
+          import json, zipfile
+          with zipfile.ZipFile('automation-workflow-guard-0.1.0.vsix') as archive:
+              names = set(archive.namelist())
+              required = {
+                  'extension/extension.cjs',
+                  'extension/dist/guard.mjs',
+                  'extension/dist/scan-document.mjs',
+                  'extension/README.md',
+                  'extension/LICENSE',
+                  'extension/package.json',
+              }
+              assert required.issubset(names), sorted(required - names)
+              manifest = json.loads(archive.read('extension/package.json'))
+              assert manifest['name'] == 'automation-workflow-guard'
+              assert manifest['version'] == '0.1.0'
+              assert manifest['main'] == './extension.cjs'
+          PY
+
+      - name: Upload installable VSIX preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: automation-workflow-guard-vscode-preview
+          path: automation-workflow-guard-0.1.0.vsix
+          if-no-files-found: error

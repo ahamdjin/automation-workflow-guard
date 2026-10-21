@@ -32,14 +32,14 @@ jobs:
 
 The default policy blocks on **errors** while still annotating **warnings**.
 
-## VS Code extension (0.1.0 preview)
+## VS Code extension (v0.1.0)
 
 The same open-source rule engine is now available as a **VS Code editor extension** under [`vscode/`](vscode/README.md). It highlights n8n JSON workflow issues, OpenAPI JSON warnings, and recognizable credential patterns in the **Problems** panel, without uploading files or executing workflows.
 
 - **Commands:** `Automation Workflow Guard: Scan Current File` and `Scan Workspace`.
 - **Setup:** No API credentials needed. Package/test locally with `npm run validate`, then `cd vscode && npx --yes @vscode/vsce@4.0.0 package --no-dependencies`.
-- **Install:** Retrieve the `.vsix` preview from [GitHub Actions CI artifacts](https://github.com/ahamdjin/automation-workflow-guard/actions/workflows/test.yml), then select VS Code **Extensions → ⋯ → Install from VSIX…**
-- **Status:** Source and installable preview first. **Not yet published on VS Code Marketplace**; publisher metadata will be confirmed before release.
+- **Install:** [Install from the VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=AhmadYar.automation-workflow-guard) or search **Automation Workflow Guard** in VS Code Extensions. Alternatively, get the `.vsix` build from [GitHub Actions](https://github.com/ahamdjin/automation-workflow-guard/actions/workflows/test.yml) and use **Extensions → ⋯ → Install from VSIX…**.
+- **Marketplace:** [Automation Workflow Guard by Ahmad Yar](https://marketplace.visualstudio.com/items?itemName=AhmadYar.automation-workflow-guard) · publisher ID: `AhmadYar` · v0.1.0.
 
 This editor extension intentionally does not claim that an untracked local environment file was committed to git; the GitHub Action's tracked-file checks remain a separate capability.
 

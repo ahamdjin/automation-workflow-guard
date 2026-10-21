@@ -3,3 +3,8 @@ coverage/
 *.log
 automation-workflow-guard-report.json
 .DS_Store
+
+# Built VS Code extension runtime and package
+vscode/dist/
+vscode/LICENSE
+*.vsix

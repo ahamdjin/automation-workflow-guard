@@ -56,8 +56,8 @@ jobs:
                   'extension/extension.cjs',
                   'extension/dist/guard.mjs',
                   'extension/dist/scan-document.mjs',
-                  'extension/README.md',
-                  'extension/LICENSE',
+                  'extension/readme.md',
+                  'extension/LICENSE.txt',
                   'extension/package.json',
               }
               assert required.issubset(names), sorted(required - names)

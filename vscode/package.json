@@ -2,7 +2,7 @@
   "name": "automation-workflow-guard",
   "displayName": "Automation Workflow Guard",
   "version": "0.1.0",
-  "publisher": "ahmadyar",
+  "publisher": "AhmadYar",
   "description": "Detect n8n workflow mistakes, unsafe OpenAPI definitions, and potential exposed secrets directly in VS Code.",
   "license": "Apache-2.0",
   "engines": {

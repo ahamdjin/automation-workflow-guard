@@ -1,0 +1,106 @@
+{
+  "name": "automation-workflow-guard",
+  "displayName": "Automation Workflow Guard",
+  "version": "0.1.0",
+  "publisher": "ahmadyar",
+  "description": "Detect n8n workflow mistakes, unsafe OpenAPI definitions, and potential exposed secrets directly in VS Code.",
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "n8n",
+    "automation",
+    "workflow",
+    "openapi",
+    "api",
+    "webhook",
+    "secrets",
+    "security",
+    "lint"
+  ],
+  "pricing": "Free",
+  "homepage": "https://www.ahmadyar.co/work/open-source",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahamdjin/automation-workflow-guard.git",
+    "directory": "vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/ahamdjin/automation-workflow-guard/issues"
+  },
+  "galleryBanner": {
+    "color": "#101827",
+    "theme": "dark"
+  },
+  "main": "./extension.cjs",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "automationWorkflowGuard.scanCurrentFile",
+        "title": "Scan Current File",
+        "category": "Automation Workflow Guard"
+      },
+      {
+        "command": "automationWorkflowGuard.scanWorkspace",
+        "title": "Scan Workspace",
+        "category": "Automation Workflow Guard"
+      }
+    ],
+    "configuration": {
+      "title": "Automation Workflow Guard",
+      "properties": {
+        "automationWorkflowGuard.scanOnChange": {
+          "type": "boolean",
+          "default": true,
+          "description": "Scan open files after edits (debounced). Saved files are always scanned."
+        },
+        "automationWorkflowGuard.scanSecrets": {
+          "type": "boolean",
+          "default": true,
+          "description": "Flag known token formats and environment-like files. Local heuristic checks only."
+        },
+        "automationWorkflowGuard.scanN8n": {
+          "type": "boolean",
+          "default": true,
+          "description": "Validate recognized n8n JSON workflow exports."
+        },
+        "automationWorkflowGuard.scanOpenApi": {
+          "type": "boolean",
+          "default": true,
+          "description": "Validate recognized OpenAPI JSON documents (no YAML schema support)."
+        },
+        "automationWorkflowGuard.maxWorkspaceFiles": {
+          "type": "integer",
+          "default": 300,
+          "minimum": 25,
+          "maximum": 2000,
+          "description": "Maximum files enumerated when running Scan Workspace."
+        }
+      }
+    }
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true,
+      "description": "Only reads files to produce local diagnostics; does not execute them or send data anywhere."
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "node ../scripts/prepare-vscode.mjs"
+  },
+  "files": [
+    "extension.cjs",
+    "dist/**",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ]
+}

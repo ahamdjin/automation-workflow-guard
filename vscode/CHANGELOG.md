@@ -7,4 +7,4 @@
 - Packaged directly from the shared Automation Workflow Guard scanner.
 - No remote service, account, telemetry, or workflow execution.
 
-Marketplace publication will occur only after the maintainer verifies the publisher ID, tests the VSIX, and approves the listing.
+The public listing URL for this release is [Automation Workflow Guard for VS Code](https://marketplace.visualstudio.com/items?itemName=AhmadYar.automation-workflow-guard).
